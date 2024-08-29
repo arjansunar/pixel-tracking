@@ -39,7 +39,6 @@ def index(request):
 class OpenTrackingView(View):
     def get(self, request, pixel_id):
         data = get_request_data(request)
-        print(data)
         detail = models.TrackDetail.objects.create(**data)
         models.TrackPixel.objects.filter(pk=pixel_id).update(
             is_opened=True, detail=detail
@@ -51,3 +50,6 @@ class TrackPixelListView(ListView):
     model = models.TrackPixel
     template_name = "trackpixel_list.html"  # Template file name
     context_object_name = "pixels"  # Context variable name for the template
+
+    def get_queryset(self):
+        return super().get_queryset().order_by("-pk")
