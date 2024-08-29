@@ -1,0 +1,34 @@
+<!-- trackpixel_list.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Pixels</title>
+  </head>
+  <body>
+    <h1>Track Pixels and Details</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Is Opened</th>
+          <th>User Agent</th>
+          <th>User IP</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pixel in pixels %}
+        <tr>
+          <td>{{ pixel.is_opened }}</td>
+          {% if pixel.detail %}
+          <td>{{ pixel.detail.user_agent }}</td>
+          <td>{{ pixel.detail.user_ip }}</td>
+          {% else %}
+          <td colspan="2">No details available</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
