@@ -1,4 +1,4 @@
-## Email tracking with Pixel
+## Logging user details using `pixel`
 
 A transparent pixel image is embedded within the body of the email payload / site.
 This image's `src` attribute is prefixed with a tracking code that is created before
